@@ -7,8 +7,11 @@ readme = "README.md"
 packages = [{include = "hse_case"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-
+python = "^3.9"
+sanic = "20.12.6"
+bcrypt = "^4.0.1"
+PyJWT = "^2.6.0"
+pymongo = {extras = ["srv"], version = "^4.3.2"}
 
 [build-system]
 requires = ["poetry-core"]
