@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [solidPlugin(), suidPlugin()],
   server: {
     host: true,
-    port: 3000
+    port: 3000,
+    proxy: {
+      '/auth/.*': 'http://localhost:5000'
+    }
   },
   build: {
     target: 'esnext',

@@ -17,7 +17,6 @@ export default function Main() {
         <div style={{
             display: 'flex',
             "flex-direction": 'column',
-            // "background-color": "#E2F6FF",
             width: '100vw',
             height: '100vh'
         }}>
