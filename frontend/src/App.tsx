@@ -1,18 +1,10 @@
 import { lazy } from 'solid-js'
 import { Routes, Route } from '@solidjs/router'
-// import { createTheme } from '@suid/material'
 
 const Main = lazy(() => import('./pages/Main'))
 const Login = lazy(() => import('./pages/Login'))
 const Register = lazy(() => import('./pages/Register'))
-
-// const theme = createTheme({
-//   components: {
-//     MuiToggleButtonGroup: {
-      
-//     }
-//   }
-// })
+const Personal = lazy(() => import('./pages/Personal'))
 
 export default function App() {
   return (
@@ -20,6 +12,7 @@ export default function App() {
       <Route path='/' component={Main}/>
       <Route path='/login' component={Login}/>
       <Route path='/register' component={Register}/>
+      <Route path='/personal' component={Personal}/>
     </Routes>
   )
 }

@@ -8,7 +8,10 @@ export default defineConfig({
     host: true,
     port: 3000,
     proxy: {
-      '/auth/.*': 'http://localhost:5000'
+      '/auth/register': 'http://localhost:5000',
+      '/auth/login': 'http://localhost:5000',
+      '/logout': 'http://localhost:5000/auth',
+      '/api/get_nickname': 'http://localhost:5000'
     }
   },
   build: {
