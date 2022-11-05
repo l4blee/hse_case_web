@@ -8,7 +8,7 @@ with open('backend/verification_email.html') as f:
 
 class MailTransport:
     def __init__(self, *credentials) -> None:
-        self.client = SMTP_SSL('smtp.yandex.ru', 465, timeout=10)
+        self.client = SMTP_SSL('smtp.gmail.com', 465, timeout=10)
         self.mail, self.password = credentials
 
         self.client.login(self.mail, self.password)
