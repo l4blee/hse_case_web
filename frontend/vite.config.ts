@@ -10,8 +10,9 @@ export default defineConfig({
     proxy: {
       '/auth/register': 'http://localhost:5000',
       '/auth/login': 'http://localhost:5000',
-      '/logout': 'http://localhost:5000/auth',
-      '/api/get_nickname': 'http://localhost:5000'
+      '/logout': 'http://localhost:5000',
+      '/api/get_data': 'http://localhost:5000',
+      '/api/get_qr': 'http://localhost:5000'
     }
   },
   build: {

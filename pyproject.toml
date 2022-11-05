@@ -12,6 +12,8 @@ sanic = "20.12.6"
 bcrypt = "^4.0.1"
 PyJWT = "^2.6.0"
 pymongo = {extras = ["srv"], version = "^4.3.2"}
+aiohttp = {extras = ["speedups"], version = "^3.8.3"}
+aiofiles = "^22.1.0"
 
 [build-system]
 requires = ["poetry-core"]
