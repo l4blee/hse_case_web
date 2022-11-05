@@ -75,7 +75,8 @@ async def register(request: Request):
         hashed_password=hased_pwd,
         salt=salt,
         is_admin=False,
-        verified=False
+        verified=False,
+        coins=0
     )
 
     request.ctx.db.insert_one(user.to_dict())

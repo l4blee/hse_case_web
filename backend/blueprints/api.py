@@ -41,5 +41,5 @@ async def get_qr(request):
         )
     
     async with aiohttp.ClientSession() as session:
-        async with session.get(f'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={token}') as response:
+        async with session.get(f'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data={token}') as response:
             return raw(await response.read(), content_type='image/png')

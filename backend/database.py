@@ -20,6 +20,7 @@ class UserModel:
 
     is_admin: bool
     verified: bool
+    coins: int
 
     @classmethod
     def from_record(cls, record: dict):
@@ -31,7 +32,8 @@ class UserModel:
             hashed_password=record.get('hashed_password').encode('utf-8'),
             salt=record.get('salt').encode('utf-8'),
             is_admin=record.get('is_admin', False),
-            verified=record.get('verified', False)
+            verified=record.get('verified', False),
+            coins=record.get('coins', 0)
         )
     
     def to_dict(self) -> dict:
@@ -43,7 +45,8 @@ class UserModel:
             'hashed_password': self.hashed_password.decode('utf-8'),
             'salt': self.salt.decode('utf-8'),
             'is_admin': self.is_admin,
-            'verified': self.verified
+            'verified': self.verified,
+            'coins': self.coins
         }
 
     def validate(self, password: bytes) -> bool:
