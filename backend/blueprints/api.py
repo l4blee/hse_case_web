@@ -22,7 +22,7 @@ async def get_data(request: Request):
     
     requested: list = request.json.get('requested')
     requested = filter(lambda x: x not in ['hashed_password', 'salt'], requested)
-    user = request.ctx.login_manager.get_user(token)
+    user = request.ctx.user
 
     returnable = {i: getattr(user, i, None) for i in requested}
 
@@ -41,5 +41,5 @@ async def get_qr(request):
         )
     
     async with aiohttp.ClientSession() as session:
-        async with session.get(f'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data={token}') as response:
+        async with session.get(f'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={token}') as response:
             return raw(await response.read(), content_type='image/png')

@@ -7,6 +7,7 @@ from sanic.log import logger
 
 from database import MongoDB
 from auth import LoginManager
+from smtp import MailTransport
 
 app = Sanic(__name__)
 app.static('/assets', 'frontend/dist/assets')
@@ -30,9 +31,11 @@ db = MongoDB(
     )  
 )
 login_manager = LoginManager(app)
-
+mail = MailTransport(os.getenv('SMTP_LOGIN'), os.getenv('SMTP_PASSWORD'))
 
 @app.middleware
 async def request(request):
+    request.ctx.mail = mail
     request.ctx.db = db.users
     request.ctx.login_manager = login_manager
+    request.ctx.user = login_manager.get_user(request)

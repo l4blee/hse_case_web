@@ -1,5 +1,5 @@
 from sanic import Blueprint
-from sanic.response import file, redirect
+from sanic.response import file, redirect, text
 
 bp = Blueprint(
     'main',
@@ -12,6 +12,12 @@ bp = Blueprint(
 async def index(request, path: str = None):
     if path == 'personal' and request.ctx.user is None:
         return redirect('/login')
+    
+    if path == 'admin' :
+        if request.ctx.user is None:
+            return redirect('/login')
+        elif not request.ctx.user.is_admin:
+            return text('You have no privileges to access this page.', 403)
         
     return await file('frontend/dist/index.html')
 

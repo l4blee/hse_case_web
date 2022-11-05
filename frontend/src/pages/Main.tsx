@@ -5,9 +5,10 @@ import Container from '@suid/material/Container'
 import Box from '@suid/material/Box'
 import Button from '@suid/material/Button'
 import ButtonGroup from '@suid/material/ButtonGroup'
-import { createSignal } from 'solid-js'
+import { createResource, createSignal } from 'solid-js'
 import IconButton from '@suid/material/IconButton'
 import Dismiss from 'solid-dismiss'
+import { getData } from '../utils'
 
 const contentBlockStyles = {
     display: 'block',
@@ -24,6 +25,7 @@ const contentBlockStyles = {
 export default function Main() {
     const sessionID = document.cookie.split('; ').find(row => row.startsWith('session='))?.split('=')[1]
     const [menuOpen, setMenuOpen] = createSignal(false)
+    const [isAdmin, _] = createResource(async () => (await getData(['is_admin'])).is_admin)  
     let menuBtn: HTMLButtonElement
     
     function onNavBtnClick(event: Event) {
@@ -97,6 +99,7 @@ export default function Main() {
                                         zIndex: 1
                                     }}>
                                         <Button fullWidth onClick={() => window.location.assign('/personal')}>Личный кабинет</Button>
+                                        {isAdmin() && <Button fullWidth onClick={() => window.location.assign('/admin')}>Админ панель</Button>}
                                         <Button fullWidth sx={{color: '#d32f2f', mt: '5px'}} onClick={() => window.location.assign('/logout')}><LogoutOutlined/>Выход</Button>
                                     </Box>
                                 </Dismiss>

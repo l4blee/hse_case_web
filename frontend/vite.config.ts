@@ -12,7 +12,7 @@ export default defineConfig({
       '/auth/login': 'http://localhost:5000',
       '/logout': 'http://localhost:5000',
       '/api/get_data': 'http://localhost:5000',
-      '/api/get_qr': 'http://localhost:5000'
+      '/api/get_qr': 'http://localhost:5000',
     }
   },
   build: {

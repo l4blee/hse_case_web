@@ -19,6 +19,7 @@ class UserModel:
     salt: bson.Binary
 
     is_admin: bool
+    verified: bool
 
     @classmethod
     def from_record(cls, record: dict):
@@ -29,7 +30,8 @@ class UserModel:
             course=record.get('course'),
             hashed_password=record.get('hashed_password').encode('utf-8'),
             salt=record.get('salt').encode('utf-8'),
-            is_admin=record.get('is_admin', False)
+            is_admin=record.get('is_admin', False),
+            verified=record.get('verified', False)
         )
     
     def to_dict(self) -> dict:
@@ -40,7 +42,8 @@ class UserModel:
             'course': self.course,
             'hashed_password': self.hashed_password.decode('utf-8'),
             'salt': self.salt.decode('utf-8'),
-            'is_admin': self.is_admin
+            'is_admin': self.is_admin,
+            'verified': self.verified
         }
 
     def validate(self, password: bytes) -> bool:

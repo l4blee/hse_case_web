@@ -1,28 +1,20 @@
 import Box from "@suid/material/Box"
 import { createResource } from "solid-js"
+import { getData, getQR } from "../utils"
 
-const getData = async () => {
-    return await fetch(
-        '/api/get_data/',
-        {
-            method: 'POST',
-            body: JSON.stringify({requested: ['fullname', 'email', 'nickname', 'course']}),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-    ) 
-    .then(response => response.json())
-}
+
 
 export default function Personal() {
-    const [userData, _] = createResource(getData)
+    const retrieveInfo = async () => await getData(['nickname', 'email', 'fullname', 'course'])
+    const [userData, _] = createResource(retrieveInfo)
+    const [qrCode, __] = createResource(getQR)
 
     return (
         <Box sx={{p: '20px'}}>
             <pre>
                 {JSON.stringify(userData(), null, '\t')}
             </pre>
+            <img src={qrCode()} alt='QR Code'/>
         </Box>
     )
 }
