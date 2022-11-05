@@ -1,7 +1,7 @@
 import Box from "@suid/material/Box"
 import Container from "@suid/material/Container"
 import Typography from "@suid/material/Typography"
-import { createResource } from "solid-js"
+import { createResource, onMount } from "solid-js"
 import { getData, getQR } from "../utils"
 import qrBg from '../assets/qrBg.png'
 import { AttachMoney } from "@suid/icons-material"
@@ -12,6 +12,10 @@ export default function Personal() {
     const retrieveInfo = async () => await getData(['nickname', 'email', 'fullname', 'course', 'coins'])
     const [userData, _] = createResource(retrieveInfo)
     const [qrCode, __] = createResource(getQR)
+
+    onMount(() => {
+        document.title = 'TimeSim | Личный кабинет'
+    })
 
     return (
         <Box 
