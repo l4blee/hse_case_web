@@ -8,6 +8,7 @@ ENV PYTHONFAULTHANDLER=1 \
     PIP_DEFAULT_TIMEOUT=100
 
 RUN apt update -y && apt upgrade -y
+RUN apt install gcc -y
 
 WORKDIR /nosok/
 
