@@ -4,6 +4,7 @@ from importlib import import_module
 
 from sanic import Sanic
 from sanic.log import logger
+from sanic_cors import CORS
 
 from database import MongoDB
 from auth import LoginManager
@@ -24,6 +25,7 @@ for i in Path('backend/blueprints').glob('*.py'):
 logger.info(f'Available blueprints: {", ".join(app.blueprints)}')
 logger.info('Finished configuring Sanic, proceeding..')
 
+cors = CORS(app)
 db = MongoDB(
     os.getenv('DATABASE_URL').format(
                     os.getenv('DB_USERNAME'),

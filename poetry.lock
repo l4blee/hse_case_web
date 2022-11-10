@@ -316,6 +316,29 @@ dev = ["ujson (>=1.35)", "uvloop (>=0.5.3)", "towncrier", "bandit", "flake8", "b
 all = ["ujson (>=1.35)", "uvloop (>=0.5.3)", "pygments", "docutils", "recommonmark (>=0.5.0)", "sphinx-rtd-theme", "sphinx (>=2.1.2)", "towncrier", "bandit", "flake8", "black", "tox", "aiofiles", "pytest-dependency", "pytest-benchmark", "pytest-sugar", "pytest-sanic", "beautifulsoup4", "httpcore (>=0.11.0,<0.12.0)", "pytest-cov", "gunicorn (==20.0.4)", "multidict (>=5.0,<6.0)", "pytest (==5.2.1)"]
 
 [[package]]
+name = "sanic-cors"
+version = "0.9.9.post3"
+description = "A Sanic extension adding a decorator for CORS support. Based on flask-cors by Cory Dolphin."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+sanic = ">=0.8.3"
+sanic-plugins-framework = ">=0.8.2"
+
+[[package]]
+name = "sanic-plugins-framework"
+version = "0.9.5"
+description = "Doing all of the boilerplate to create a Sanic Plugin, so you don't have to."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+sanic = ">=18.12.0,<21"
+
+[[package]]
 name = "sniffio"
 version = "1.3.0"
 description = "Sniff out which async library your code is running under"
@@ -367,7 +390,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bf4e6556377429e6f488dc21e92fb132b037b41afb029be471d56add0eff205e"
+content-hash = "901aea8ead34b70d8bbbf28bfe2156376c58a535c886abaae0bc6988db5dafdc"
 
 [metadata.files]
 aiodns = [
@@ -1011,6 +1034,14 @@ rfc3986 = [
 sanic = [
     {file = "sanic-20.12.6-py3-none-any.whl", hash = "sha256:3339036806e97fa78057627e1de5ee64f161b3164b6fbabbaeb1adaa745445e7"},
     {file = "sanic-20.12.6.tar.gz", hash = "sha256:0109ad50f403664edddf62d99aec5f21b259c2c4a68246e99d390b121c364b6c"},
+]
+sanic-cors = [
+    {file = "Sanic-Cors-0.9.9.post3.tar.gz", hash = "sha256:28f7a87304fd69024e141294f60bff3066cb11eac4aae8c5a80a6b3f8069698e"},
+    {file = "Sanic_Cors-0.9.9.post3-py2.py3-none-any.whl", hash = "sha256:4a93f62ded2a9e91370e159c9791039aadc68593149cf903bddaf470b6e98d4a"},
+]
+sanic-plugins-framework = [
+    {file = "Sanic-Plugins-Framework-0.9.5.tar.gz", hash = "sha256:0e9fad57f223818cbc286419be2a9ae7b3e89cf0fd50f818f63e33365325acd8"},
+    {file = "Sanic_Plugins_Framework-0.9.5-py2.py3-none-any.whl", hash = "sha256:f64d447bad6eee18d219451769ef6a41b853491ae8fab4484e5501ed3b905ad5"},
 ]
 sniffio = [
     {file = "sniffio-1.3.0-py3-none-any.whl", hash = "sha256:eecefdce1e5bbfb7ad2eeaabf7c1eeb404d7757c379bd1f7e5cce9d8bf425384"},
